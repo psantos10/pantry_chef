@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:16.4
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./log:/root/log/.psql_history
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - PSQL_HISTFILE=/root/log/.psql_history
+    ports:
+      - 5432
+
+volumes:
+  postgres_data:
