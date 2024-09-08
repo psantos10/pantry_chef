@@ -3,7 +3,7 @@
 # Table name: ingredients
 #
 #  id           :bigint           not null, primary key
-#  measure_unit :integer          default(0)
+#  measure_unit :integer          default("unit")
 #  name         :string
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

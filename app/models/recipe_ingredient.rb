@@ -3,6 +3,7 @@
 # Table name: recipe_ingredients
 #
 #  id            :bigint           not null, primary key
+#  label         :string
 #  quantity      :decimal(10, 5)
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null

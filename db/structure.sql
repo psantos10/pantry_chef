@@ -67,7 +67,8 @@ CREATE TABLE public.recipe_ingredients (
     ingredient_id bigint NOT NULL,
     quantity numeric(10,5),
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    label character varying
 );
 
 
@@ -383,6 +384,7 @@ ALTER TABLE ONLY public.user_ingredients
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240908171950'),
 ('20240905153558'),
 ('20240905153532'),
 ('20240905152958'),
