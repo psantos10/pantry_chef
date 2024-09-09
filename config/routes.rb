@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "ingredients/index"
+  get "ingredients/new"
   get "users/new"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   controller :sessions do
@@ -12,7 +14,13 @@ Rails.application.routes.draw do
     post "signup" => :create
   end
 
-  resources :ingredients
+  resources :ingredients, only: %i[index new]
+  resources :recipes, only: %i[show]
+  resources :user_ingredients, only: %i[create destroy]
+
+  namespace :search do
+    get "ingredients" => "ingredients#search"
+  end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
