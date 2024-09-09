@@ -175,7 +175,8 @@ CREATE TABLE public.users (
     email character varying,
     name character varying,
     created_at timestamp(6) without time zone NOT NULL,
-    updated_at timestamp(6) without time zone NOT NULL
+    updated_at timestamp(6) without time zone NOT NULL,
+    password_digest character varying
 );
 
 
@@ -384,6 +385,7 @@ ALTER TABLE ONLY public.user_ingredients
 SET search_path TO "$user", public;
 
 INSERT INTO "schema_migrations" (version) VALUES
+('20240909151954'),
 ('20240908171950'),
 ('20240905153558'),
 ('20240905153532'),
