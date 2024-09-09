@@ -114,6 +114,10 @@ GEM
       railties (>= 5.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hotwire_combobox (0.3.2)
+      rails (>= 7.0.7.2)
+      stimulus-rails (>= 1.2)
+      turbo-rails (>= 1.2)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -319,6 +323,7 @@ DEPENDENCIES
   debug
   dotenv
   factory_bot_rails
+  hotwire_combobox
   jbuilder
   jsbundling-rails
   kaminari
