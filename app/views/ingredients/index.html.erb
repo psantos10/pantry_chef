@@ -20,3 +20,17 @@
     <%= paginate @user_ingredients %>
   </div>
 </div>
+
+<div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+  <h1 class="title mb-5">TOP 5 Recipes I can prepare with my Ingredients</h1>
+
+  <% @most_relevant_recipes.each do |recipe| %>
+    <div class="flex justify-between items-center py-3 border-b border-gray-200 mt-6">
+      <div>
+        <h2 class="text-lg font-semibold">
+          <%= link_to recipe.title, recipe %>
+        </h2>
+      </div>
+    </div>
+  <% end %>
+</div>

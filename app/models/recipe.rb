@@ -14,4 +14,13 @@ class Recipe < ApplicationRecord
 
   has_many :recipe_ingredients, dependent: :destroy
   has_many :ingredients, through: :recipe_ingredients
+
+  def self.most_relevant_recipes(ingredient_ids)
+    Recipe.joins(:recipe_ingredients)
+      .where(recipe_ingredients: { ingredient_id: ingredient_ids })
+      .group(:id)
+      .having("COUNT(DISTINCT recipe_ingredients.ingredient_id) = (SELECT COUNT(DISTINCT ri.ingredient_id) FROM recipe_ingredients ri WHERE ri.recipe_id = recipes.id)")
+      .order("COUNT(recipe_ingredients.recipe_id) DESC")
+      .limit(5)
+  end
 end
