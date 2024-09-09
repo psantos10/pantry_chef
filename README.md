@@ -1,24 +1,7 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+### [PantryChef](https://pantrychef.psantos.dev/)
 
-Things you may want to cover:
+It's dinner time!
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This application helps users find the most relevant recipes that they can prepare with the ingredients that they have at home
