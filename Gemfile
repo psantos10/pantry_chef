@@ -40,6 +40,8 @@ gem "bootsnap", require: false
 
 gem "hotwire_combobox"
 gem "kaminari"
+gem "json-stream", "~> 1.0"
+gem "solid_queue"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
