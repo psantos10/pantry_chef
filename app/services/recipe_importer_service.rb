@@ -1,9 +1,11 @@
-namespace :recipes do
-  desc "Import recipes from JSON file"
-  task import_from_json: :environment do
-    file = Rails.root.join("storage", "data", "recipes-en.json")
-    recipes = JSON.parse(File.read(file))
+class RecipeImporterService < ApplicationService
+  attr_reader :recipes
 
+  def initialize(recipes:)
+    @recipes = recipes
+  end
+
+  def call
     recipes.each do |recipe|
       new_recipe = Recipe.new(
         title: recipe["title"],
@@ -27,14 +29,11 @@ namespace :recipes do
           quantity: ingredient[:quantity],
           label: ingredient[:label]
         )
-
-        print "."
-      rescue ActiveRecord::RecordInvalid => e
-        puts "Error: #{e.message}"
-        puts "Ingredient: #{new_ingredient.inspect}"
       end
     end
   end
+
+  private
 
   def extract_image_url(recipe_image)
     image_url_parts = recipe_image.split("?url=")
