@@ -1,0 +1,22 @@
+<div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+  <h1 class="title mb-5">Add new Ingredient to my Pantry</h1>
+
+  <%= link_to "Add new Ingredient", new_ingredient_path, class: "btn py-4" %>
+
+
+  <% @user_ingredients.each do |user_ingredient| %>
+    <div class="flex justify-between items-center py-3 border-b border-gray-200 mt-6">
+      <div>
+        <h2 class="text-lg font-semibold"><%= user_ingredient.ingredient.name %></h2>
+        <p class="text-sm text-gray-500">Quantity: <%= user_ingredient.quantity %> <%= user_ingredient.ingredient.measure_unit %></p>
+      </div>
+      <div>
+        <%= button_to "Delete", user_ingredient, method: :delete, data: { confirm: "Are you sure?" }, class: "btn" %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="mt-3">
+    <%= paginate @user_ingredients %>
+  </div>
+</div>

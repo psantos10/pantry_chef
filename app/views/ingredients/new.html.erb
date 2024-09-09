@@ -1,0 +1,22 @@
+<div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+
+  <h1 class="title">Add new Ingredient to my Pantry</h1>
+
+  <%= form_with model: @user_ingredient, class: "py-5" do |form| %>
+    <div class="mb-4">
+      <%= form.combobox :ingredient_id, search_ingredients_path, label: "Ingredient", placeholder: "Search and select an ingredient" %>
+    </div>
+
+    <div class="mb-4">
+      <%= form.label :quantity, class: "form-label" %>
+      <div class="mt-2">
+        <%= form.number_field :quantity, class: "form-control w-[45rem] h-12"  %>
+      </div>
+    </div>
+
+    <div>
+      <%= form.submit "Add ingredient", class: "btn" %>
+    </div>
+  <% end %>
+
+</div>
