@@ -21,4 +21,14 @@ class User < ApplicationRecord
 
   validates :name, :email, presence: true
   validates :email, uniqueness: { case_sensitive: false }
+
+  def have_enough_ingredients_for?(recipe:)
+    recipe.ingredients.all? do |ingredient|
+      user_ingredient = ingredients.find_by(id: ingredient)
+      user_ingredient.present?
+
+      # TODO: Take the quantity into account
+      # user_ingredient&.quantity >= recipe_ingredient.quantity
+    end
+  end
 end
