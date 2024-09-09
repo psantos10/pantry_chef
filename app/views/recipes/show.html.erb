@@ -1,0 +1,40 @@
+<div class="bg-white">
+  <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+    <div class="group relative flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white">
+      <div class="aspect-h-4 aspect-w-3 bg-gray-200 sm:aspect-none group-hover:opacity-75 sm:h-96">
+        <%= image_tag @recipe.image, width: 300, class: "h-full w-full object-cover object-center sm:h-full sm:w-full" %>
+      </div>
+      <div class="flex flex-1 flex-col space-y-2 p-4">
+        <h3 class="text-sm font-medium text-gray-900"><%= @recipe.title %></h3>
+        <div class="flex flex-1 flex-col justify-end">
+          <p class="text-sm italic text-gray-500"><%= @recipe.category %></p>
+        </div>
+      </div>
+
+
+      <div class="flex flex-1 flex-col space-y-2 p-4">
+        <hr>
+
+        <h2 class="font-semibold text-2xl">Ingredients</h2>
+
+        <ul>
+          <% @recipe.recipe_ingredients.each do |ingredient| %>
+            <li><%= ingredient.label %></li>
+          <% end %>
+        </ul>
+      </div>
+
+      <div class="flex flex-1 flex-col space-y-2 p-4">
+        <% if authenticated? %>
+          <%= success_alert { "Congratulations! You do have enough ingredients to prepare this recipe." } if current_user.have_enough_ingredients_for?(recipe: @recipe) %>
+          <%= warning_alert { "Sorry! You do not have enough ingredients to prepare this recipe." } unless current_user.have_enough_ingredients_for?(recipe: @recipe) %>
+        <% else %>
+          <%= danger_alert do %>
+            You must be logged in to view the availability of ingredients for this recipe.
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+</div>
